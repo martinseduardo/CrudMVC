@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CrudMVC.Models;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace CrudMVC.Services
 {
@@ -18,6 +19,7 @@ namespace CrudMVC.Services
 
         public Employee Create(Employee employee)
         {
+            var jsonEmployee = JsonConvert.SerializeObject(employee);
             _employees.InsertOne(employee);
             return employee;
         }
